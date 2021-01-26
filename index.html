@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <!-- Submit Area -->
+        <!---------------------------- Submit Area -------------------------------->
     <div id="submit-area">
         <h1 class="text-center">Welcome to DebWeb Bank</h1>
         <div class="login-area">
@@ -26,34 +26,56 @@
         </div>
     </div>
 
-    <!-- Transaction Area -->
+    <!---------------------------- Transaction Area -------------------------------->
     <div id="transaction-area">
         <div class="row">
-            <div class="col-md-4 deposit status">
-                <h3>Deposit</h3>
-                <h3>$00</h3>
+            <div class="col-md-4 ">
+                <div class="status deposit ">
+                    <h3>Deposit</h3>
+                    <h3>$00</h3>
+                </div>
             </div>
-            <div class="col-md-4 withdraw status">
-                <h3>Withdraw</h3>
-                <h3>$00</h3>
+            <div class="col-md-4">
+                <div class="status withdraw">
+                    <h3>Withdraw</h3>
+                    <h3>$00</h3>
+                </div>
             </div>
-            <div class="col-md-4 balance status">
-                <h3>Balance</h3>
-                <h3>$1240</h3>
+            <div class="col-md-4">
+                <div class="status balance ">
+                    <h3>Balance</h3>
+                    <h3>$1240</h3>
+                </div>
+            </div>
+        </div>
+       <!---------------------------- Deposit & Withdraw Area -------------------------------->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="login-area">
+                    <h1>Deposit</h1>
+                    <input type="text" class="form-control" placeholder="$ amount you want to Deposit">
+                    <br>
+                    <div class="btn btn-success">Deposit</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="login-area">
+                    <h1>Withdraw</h1>
+                    <input type="text" class="form-control" placeholder="$ amount you want to Withdraw">
+                    <br>
+                    <div class="btn btn-success">Withdraw</div>
+                </div>
             </div>
         </div>
 
     </div>
 
     <script>
-        document.getElementById('loginId').addEventListener('click',function(){
-            document.getElementById('submit-area').style.display ='none';
-            document.getElementById('transaction-area').style.display ='block';
+        document.getElementById('loginId').addEventListener('click', function () {
+            document.getElementById('submit-area').style.display = 'none';
+            document.getElementById('transaction-area').style.display = 'block';
 
         });
-
-
-
     </script>
 </body>
 
