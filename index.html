@@ -13,7 +13,7 @@
 </head>
 
 <body>
-        <!---------------------------- Submit Area -------------------------------->
+    <!---------------------------- Submit Area -------------------------------->
     <div id="submit-area">
         <h1 class="text-center">Welcome to DebWeb Bank</h1>
         <div class="login-area">
@@ -32,38 +32,39 @@
             <div class="col-md-4 ">
                 <div class="status deposit ">
                     <h3>Deposit</h3>
-                    <h3>$00</h3>
+                    <h3>$ <span id="currentDeposit">00</span></h3>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="status withdraw">
                     <h3>Withdraw</h3>
-                    <h3>$00</h3>
+                    <h3>$ <span id="currentWithdraw">00</span></h3>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="status balance ">
                     <h3>Balance</h3>
-                    <h3>$1240</h3>
+                    <h3>$ <span id="currentBalance">1240</span></h3>
                 </div>
             </div>
         </div>
-       <!---------------------------- Deposit & Withdraw -------------------------------->
+
+        <!---------------------------- Deposit & Withdraw -------------------------------->
         <div class="row">
             <div class="col-md-6">
                 <div class="login-area">
-                    <h1>Deposit</h1>
-                    <input type="text" class="form-control" placeholder="$ amount you want to Deposit">
+                    <h3>Deposit</h3>
+                    <input id="depositAmount"  type="text" class="form-control" placeholder="$ amount you want to Deposit">
                     <br>
-                    <div class="btn btn-success">Deposit</div>
+                    <div id="depositButton" class="btn btn-success">Deposit</div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="login-area">
-                    <h1>Withdraw</h1>
-                    <input type="text" class="form-control" placeholder="$ amount you want to Withdraw">
+                    <h3>Withdraw</h3>
+                    <input id="withdrawAmount" type="text" class="form-control" placeholder="$ amount you want to Withdraw">
                     <br>
-                    <div class="btn btn-success">Withdraw</div>
+                    <div id="withdrawButton" class="btn btn-success">Withdraw</div>
                 </div>
             </div>
         </div>
@@ -71,11 +72,52 @@
     </div>
 
     <script>
+        // activating Welcome page to transaction page
         document.getElementById('loginId').addEventListener('click', function () {
             document.getElementById('submit-area').style.display = 'none';
             document.getElementById('transaction-area').style.display = 'block';
-
         });
+
+
+
+        
+        // working on deposit button
+        document.getElementById('depositButton').addEventListener('click', function () {
+            const depositNumber  = getInputText('depositAmount');
+
+
+            showSpanText('currentDeposit',depositNumber);
+            showSpanText('currentBalance',depositNumber);
+
+            document.getElementById('depositAmount').value = '';
+        });
+
+        // working on withdraw button
+        document.getElementById('withdrawButton').addEventListener('click', function () {
+            const withdrawNumber = getInputText('withdrawAmount');
+
+            showSpanText('currentWithdraw',withdrawNumber);
+            showSpanText('currentBalance',-1*withdrawNumber);
+            document.getElementById('withdrawAmount').value = '';
+        });
+
+           // working on input text
+           function getInputText(id){
+                   const inputText = document.getElementById(id).value;
+                   const inputValue = parseFloat(inputText);
+                   return inputValue;
+
+           }
+
+         // working on span tag to show
+         function showSpanText(id,inputValue){
+             const current = document.getElementById(id).innerText;
+             const currentNumber = parseFloat(current);
+             const total = currentNumber + inputValue;
+
+             document.getElementById(id).innerText = total;
+
+         } 
     </script>
 </body>
 
